@@ -1,13 +1,31 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { FormComponent } from './components/form/form.component';
 
+//annotation, attribute, decorator
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet],
+  selector: 'app-root', //<approot> </approot>
+  standalone: true, //sonradan bakılacak
+  imports: [RouterOutlet,FormComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'angular.tobeto';
+  title = 'tobeto';
+  count=0;
+  inputValue:string='';
+
+  onBtnClick(event:Event){
+    //console.log("tıklandı");
+    //console.log(event);
+    console.log(this.inputValue);
+
+    this.count++;
+
+  }
+  onChange(event:Event){
+    let element=event.target as HTMLInputElement;
+    console.log("input değeri değişti",element.value);
+    this.inputValue=element.value;
+  }
 }
